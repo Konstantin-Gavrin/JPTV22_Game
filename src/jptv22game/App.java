@@ -22,13 +22,28 @@ public class App {
             int myNumber = random.nextInt(9-0+1)-0;
             System.out.print("Задумано число в диапазоне от 0 до 9, угадайте какое это число (у вас есть три попытки): ");
             Scanner scanner = new Scanner(System.in);
-            int userNumber = scanner.nextInt();scanner.nextLine();
-            if (myNumber == userNumber) {
-                System.out.println("Ты выйграл!");          
-            } else {
-                System.out.println("Ты проиграл!");
-                System.out.println("Было загадано число " + myNumber);
-            }
+            int atempt = 1;
+            do {
+                System.out.println("Попытка номер " + atempt + ": ");
+                int userNumber = scanner.nextInt();scanner.nextLine();
+                if (myNumber == userNumber) {
+                    System.out.println("Ты выйграл!");
+                    break;
+                }else{
+                    if (atempt > 2) { 
+                        System.out.println("Ты проиграл!");
+                        System.out.println("Было загадано число " + myNumber);
+                    break;
+                    }else{
+                        if (myNumber > userNumber) {
+                        System.out.println("Неправильно попробуй еще раз.(загаданное число больше)" ); 
+                        }else{
+                        System.out.println("Неправильно попробуй еще раз.(загаданное число меньше)"); 
+                        }   
+                    }
+                }
+                atempt++;
+            } while (true); 
             System.out.println("Нажмите \"q\" для выхода или любую кнопку для продолжения");
             String q = scanner.nextLine();
             if (q.equals("q")) {
