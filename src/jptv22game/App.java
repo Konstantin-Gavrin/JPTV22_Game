@@ -20,12 +20,22 @@ public class App {
         boolean repeat = true;
         do {
             int myNumber = random.nextInt(9-0+1)-0;
+            int userNumber = 10;
             System.out.print("Задумано число в диапазоне от 0 до 9, угадайте какое это число (у вас есть три попытки): ");
             Scanner scanner = new Scanner(System.in);
             int atempt = 1;
             do {
                 System.out.println("Попытка номер " + atempt + ": ");
-                int userNumber = scanner.nextInt();scanner.nextLine();
+                do {
+                    try {
+                        userNumber = scanner.nextInt();
+                        scanner.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Недопустимый символ, еще раз! ");
+                        scanner.nextLine();
+                    }
+                } while (true);
                 if (myNumber == userNumber) {
                     System.out.println("Ты выйграл!");
                     break;
@@ -50,7 +60,7 @@ public class App {
                 repeat = false;
             }
         }while (repeat);
-        System.out.println("----End Game----");
+        System.out.println("----End Game----");      
     }
     
 }
